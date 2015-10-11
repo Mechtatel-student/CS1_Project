@@ -8,12 +8,12 @@ namespace Domain.Entities
 {
     class Client : Person,  ICommentable
     {
-        List<Comment> comments1;
+        List<Comment> comments=new List<Comment>();
         
         public Location Location { get; set; }
-        public IReadOnlyList<string> telephones;
+        public IReadOnlyList<string> telephones { get; set; }
 
-        public IReadOnlyList<Comment> comments
+        public IReadOnlyList<Comment> Comments
         {
             get { return comments1; }
         }
@@ -21,10 +21,6 @@ namespace Domain.Entities
         {
             comments1.Add(comment);
         }
-        public Client(IReadOnlyList<string> telephones1)
-        {
-
-            telephones = telephones1;
-        }
+ 
     }
 }
