@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Furniture
+namespace Domain.Entities
 {
-    class Client : Person, ICommentable
+    class Client : Person,  ICommentable
     {
         List<Comment> comments1;
         public Location Location { get; set; }
