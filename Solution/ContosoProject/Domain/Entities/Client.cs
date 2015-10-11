@@ -9,6 +9,7 @@ namespace Domain.Entities
     class Client : Person,  ICommentable
     {
         List<Comment> comments1;
+        
         public Location Location { get; set; }
         public IReadOnlyList<string> telephones;
 
@@ -20,10 +21,9 @@ namespace Domain.Entities
         {
             comments1.Add(comment);
         }
-        public Client(string firstName1, string middleName1, string lastName1, Location location,
-                    List<string> telephones1): base(firstName1,middleName1,lastName1)
+        public Client(IReadOnlyList<string> telephones1)
         {
-            Location = location;
+
             telephones = telephones1;
         }
     }

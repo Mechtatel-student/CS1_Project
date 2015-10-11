@@ -8,15 +8,9 @@ namespace Domain.Entities
 {
     class Location
     {
-        public string city;
-        public string adress;
-        public Location()
-        {
-        }
-        public Location(string city1, string adress1)
-        {
-            city = city1;
-            adress = adress1;
-        }
+        public string City { get; set; }
+        public string Adress { get; set; }
+        
+        
     }
 }
