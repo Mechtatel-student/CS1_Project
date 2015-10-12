@@ -34,7 +34,12 @@ namespace Domain.Entities
           } 
       }
 
-     
+      public Person(string firstName1, string middleName1, string lastName1)
+      {
+          firstName = firstName1;
+          middleName = middleName1;
+          lastName = lastName1;
+      }
 
     }
 }

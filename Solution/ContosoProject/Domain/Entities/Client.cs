@@ -15,7 +15,7 @@ namespace Domain.Entities
 
         public IReadOnlyList<Comment> Comments
         {
-            get { return comments1; }
+            get { return comments; }
         }
         public void  AddComment(Comment comment)
         {
