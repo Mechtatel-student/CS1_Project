@@ -7,9 +7,8 @@ using Domain.Entities;
 
 namespace Domain.DAO
 {
-    public interface IClientRepository : IRepository<Client>
+    public interface IClientRepository : IRepositoryExtension<Client>
     {
-        ICollection<Client> GetByName(string name);
-        ICollection<Client> GetByCity(string city);
+        ICollection<Client> FindBy(Person person, string city);
     }
 }

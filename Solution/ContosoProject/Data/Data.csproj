@@ -48,16 +48,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
-    <Compile Include="StoreData\KeyedCollections.cs" />
-    <Compile Include="StoreData\StorageClients.cs" />
-    <Compile Include="StoreData\StoragePermissions.cs" />
-    <Compile Include="StoreData\StorageOrders.cs" />
-    <Compile Include="StoreData\Storage.cs" />
-    <Compile Include="StoreData\StorageProducts.cs" />
     <Compile Include="DummyData\DummyDAOForCategory.cs" />
     <Compile Include="DummyData\DummyDAOForClient.cs" />
     <Compile Include="DummyData\DummyDAOForComment.cs" />
+    <Compile Include="StoreData\KeyedCollections.cs" />
+    <Compile Include="DummyData\DummyDAOExtension.cs" />
     <Compile Include="DummyData\DummyDAOForOrder.cs" />
     <Compile Include="DummyData\DummyDAOForPermission.cs" />
     <Compile Include="DummyData\DummyDAOForProduct.cs" />
@@ -65,6 +60,7 @@
     <Compile Include="DummyData\DummyDAOForRole.cs" />
     <Compile Include="DummyData\DummyDAOForUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StoreData\Storage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -20,7 +20,7 @@ namespace Domain.Entities.Orders
 
         public static bool Contains(this Order Order, Product product)
         {
-            return Order.OrderItems.Where(x => x.Product == product).Count() > 0;
+            return Order.OrderItems.Any(x => x.Product == product);
         }
 
         public static void RemoveOrder(this Order Order, Product product)

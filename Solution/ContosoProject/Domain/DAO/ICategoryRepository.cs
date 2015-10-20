@@ -1,9 +1,11 @@
-﻿using Domain.Entities;
+﻿using System.Collections.Generic;
+using Domain.Entities;
 using Domain.Entities.Products;
 
 namespace Domain.DAO
 {
-    public interface ICategoryRepository : IRepository<Category>
+    public interface ICategoryRepository : IRepositoryExtension<Category>
     {
+        ICollection<Category> GetByTitle(string title);
     }
 }

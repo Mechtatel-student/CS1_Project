@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Domain.Entities.Users;
 
 namespace Domain.DAO
 {
@@ -12,11 +11,10 @@ namespace Domain.DAO
         void Create(T entity);
         void Save(T entity);
         void Delete(T entity);
+        void Delete(int id);
         T Find(int id);
 
         ICollection<T> GetAll();
         ICollection<T> GetByIsActive(bool isActive);
-        ICollection<T> GetByUser(User user);
-        ICollection<T> GetByDate(DateTime date);
     }
 }

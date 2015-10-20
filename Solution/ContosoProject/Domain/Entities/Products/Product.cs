@@ -21,6 +21,10 @@ namespace Domain.Entities.Products
             this.comments = comments;
         }
 
+        public Product()
+        {
+        }
+
         public IReadOnlyCollection<Comment> Comments
         {
             get { return (IReadOnlyCollection<Comment>)comments; }

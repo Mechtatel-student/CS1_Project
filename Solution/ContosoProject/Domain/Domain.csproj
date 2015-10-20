@@ -46,6 +46,7 @@
     <Compile Include="DAO\IPermissionRepository.cs" />
     <Compile Include="DAO\IProductRepository.cs" />
     <Compile Include="DAO\IRepository.cs" />
+    <Compile Include="DAO\IRepositoryExtension.cs" />
     <Compile Include="DAO\IRoleRepository.cs" />
     <Compile Include="DAO\IUserRepository.cs" />
     <Compile Include="Entities\Client.cs" />

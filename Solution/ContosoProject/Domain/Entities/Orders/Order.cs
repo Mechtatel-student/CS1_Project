@@ -14,6 +14,8 @@ namespace Domain.Entities.Orders
     {        
         public Client Client { get; set; }
         public Status Status { get; set; }
+        public string OrderNumber { get; set; }
+
         private List<OrderItem> orderItems;
         private ICollection<Comment> comments;
 
@@ -21,6 +23,11 @@ namespace Domain.Entities.Orders
         {
             this.comments = comments;
             orderItems = orders;
+        }
+
+        public Order()
+        {
+            
         }
 
         public List<OrderItem> OrderItems

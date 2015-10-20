@@ -14,6 +14,12 @@ namespace Domain.Entities
             _telephones = telephones;
             _comments = comments;
         }
+
+        public Client()
+        {
+            
+        }
+
         public IReadOnlyCollection<string> Telephones
         {
             get

@@ -9,11 +9,11 @@ using Domain.Entities.Orders;
 
 namespace Domain.DAO
 {
-    public interface IOrderRepository : IRepository<Order>
+    public interface IOrderRepository : IRepositoryExtension<Order>
     {
+        ICollection<Order> GetBy(string orderNumber, Status status);
         ICollection<Order> GetByClient(Client client);
         ICollection<Order> GetByProduct(Product product);
-        ICollection<Order> GetByStatus(Status status);
 
         void AddOrder(Product product, int quantity);
         bool Contains(Product product);

@@ -8,6 +8,11 @@ namespace Domain.Entities.Users
         {
             Permissions = permissions;
         }
+
+        public Role()
+        {
+        }
+
         public string Title { get; set; }
         public ICollection<Permission> Permissions { get; set; }
     }

@@ -2,7 +2,7 @@
 
 namespace Domain.DAO
 {
-    public interface ICommentRepository : IRepository<Comment> 
+    public interface ICommentRepository : IRepositoryExtension<Comment> 
     {
     }
 }
