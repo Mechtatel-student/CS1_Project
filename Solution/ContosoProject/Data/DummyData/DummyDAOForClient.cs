@@ -6,18 +6,19 @@ using Domain.Entities;
 
 namespace Data.DummyData
 {
-    class DummyDAOForClient : DummyDAOExtension<Client>, IClientRepository
+    public class DummyDAOForClient : DummyDAOExtension<Client>, IClientRepository
     {
         public DummyDAOForClient()
         {
             _collection = Storage.Clients;
         }
+
         public ICollection<Client> FindBy(Person person, string city)
         {
             var result = _collection.AsQueryable();
             if (!string.IsNullOrWhiteSpace(person.FirstName))
             {
-                result = result.Where(x=>x.Person.FirstName==person.FirstName);
+                result = result.Where(x => x.Person.FirstName == person.FirstName);
             }
             if (!string.IsNullOrWhiteSpace(person.MiddleName))
             {

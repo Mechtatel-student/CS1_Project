@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using Domain.Entities;
 using Domain.Entities.Comments;
-using Domain.Entities.Users;
 using Domain.Entities.Orders;
 using Domain.Entities.Products;
+using Domain.Entities.Users;
 
 namespace Data.StoreData
 {

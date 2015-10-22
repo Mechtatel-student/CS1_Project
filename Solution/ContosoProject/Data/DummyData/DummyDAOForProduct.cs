@@ -7,7 +7,7 @@ using Domain.Entities.Products;
 
 namespace Data.DummyData
 {
-    class DummyDAOForProduct: DummyDAOExtension<Product>, IProductRepository
+    public class DummyDAOForProduct : DummyDAOExtension<Product>, IProductRepository
     {
         public DummyDAOForProduct()
         {
@@ -36,7 +36,7 @@ namespace Data.DummyData
         {
             if (_collection.Any(x => x.SKU == sku))
             {
-                return _collection.Where(x => x.SKU== sku).ToList();
+                return _collection.Where(x => x.SKU == sku).ToList();
             }
             throw new Exception();
         }

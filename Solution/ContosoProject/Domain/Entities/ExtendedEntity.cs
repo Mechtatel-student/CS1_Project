@@ -1,6 +1,4 @@
 ﻿using System;
-using Domain.Entities.Users;
-using System.Net.Configuration;
 
 namespace Domain.Entities
 {
@@ -8,10 +6,8 @@ namespace Domain.Entities
     {
         protected ExtendedEntity()
         {
-            
+            Date = DateTime.Now;
         }
-
-        public User User { get; set; }
 
         public DateTime Date { get; set; }
 

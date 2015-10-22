@@ -1,13 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Data.StoreData;
 using Domain.DAO;
 using Domain.Entities.Comments;
-using Domain.Entities.Products;
+using Domain.Entities.Users;
 
 namespace Data.DummyData
 {
-    class DummyDAOForComment : DummyDAOExtension<Comment>, ICommentRepository
+    public class DummyDAOForComment : DummyDAOExtension<Comment>, ICommentRepository
     {
+        public ICollection<Comment> GetByUser(User user)
+        {
+            if (_collection.Any(x => x.Author == user))
+            {
+                return _collection.Where(x => x.Author == user).ToList();
+            }
+            throw new Exception();
+        }
+
         public DummyDAOForComment()
         {
             _collection = Storage.GodComments;

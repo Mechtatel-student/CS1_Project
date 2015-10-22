@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace Domain.DAO
 {
@@ -13,8 +11,9 @@ namespace Domain.DAO
         void Delete(T entity);
         void Delete(int id);
         T Find(int id);
+        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
 
-        ICollection<T> GetAll();
-        ICollection<T> GetByIsActive(bool isActive);
+        IQueryable<T> GetAll();
+        IQueryable<T> GetByIsActive(bool isActive);
     }
 }

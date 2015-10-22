@@ -10,7 +10,7 @@ using Domain.Entities.Products;
 
 namespace Data.DummyData
 {
-    class DummyDAOForOrder : DummyDAOExtension<Order>, IOrderRepository
+    public class DummyDAOForOrder : DummyDAOExtension<Order>, IOrderRepository
     {
         public DummyDAOForOrder()
         {
@@ -63,7 +63,7 @@ namespace Data.DummyData
             {
                 _collection.First(x => x.OrderItems.Any(it => it.Product == product)).IsActive = false;
             }
-            throw  new Exception();
+            throw new Exception();
         }
 
         public void EditOrder(Product product, int quantity)

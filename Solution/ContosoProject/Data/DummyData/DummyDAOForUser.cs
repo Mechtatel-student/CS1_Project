@@ -8,7 +8,7 @@ using Domain.Entities.Users;
 
 namespace Data.DummyData
 {
-    class DummyDAOForUser : DummyDAOExtension<User>, IUserRepository
+    public class DummyDAOForUser : DummyDAOExtension<User>, IUserRepository
     {
         public DummyDAOForUser()
         {
