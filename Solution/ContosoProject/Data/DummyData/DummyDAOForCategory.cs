@@ -11,14 +11,14 @@ namespace Data.DummyData
     {
         public DummyDAOForCategory()
         {
-            _collection = Storage.Categories;
+            Collection = Storage.Categories;
         }
 
         public ICollection<Category> GetByTitle(string title)
         {
             if (!string.IsNullOrWhiteSpace(title))
             {
-                return _collection.Where(x=>x.Title==title).ToList();
+                return Collection.Where(x=>x.Title==title).ToList();
             }
             throw new Exception();
         }

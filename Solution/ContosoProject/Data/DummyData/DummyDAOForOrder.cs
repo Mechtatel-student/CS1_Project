@@ -7,6 +7,7 @@ using Domain.Entities;
 using Domain.Entities.Comments;
 using Domain.Entities.Orders;
 using Domain.Entities.Products;
+using Domain.Entities.Clients;
 
 namespace Data.DummyData
 {
@@ -14,71 +15,104 @@ namespace Data.DummyData
     {
         public DummyDAOForOrder()
         {
-            _collection = Storage.Orders;
+            Collection = Storage.Orders;
         }
 
-        public ICollection<Order> GetBy(string orderNumber, Status status)
+        public ICollection<Order> GetBy(string orderNumber, Status status, Client client)
         {
-            return !string.IsNullOrWhiteSpace(orderNumber) ? _collection.Where(x => x.OrderNumber == orderNumber).ToList() : _collection.Where(x => x.Status == status).ToList();
+            var result = Collection.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(orderNumber))
+            {
+                return result.Where(x => x.OrderNumber == orderNumber).ToList();
+            }
+
+            if (client != null)
+            {
+                result = result.Where(x => x.Client.Equals(client));
+            }
+
+            if (status != Status.All)
+            {
+                result = result.Where(x => x.Status == status);
+            }
+
+            if (!Equals(result, Collection.AsQueryable()))
+            {
+                return result.ToList();
+            }
+            throw new Exception();
+        }
+
+        public Order GetByNumber(string orderNumber)
+        {
+            if (string.IsNullOrWhiteSpace(orderNumber))
+                return Collection.FirstOrDefault(x => x.OrderNumber == orderNumber);
+            return null;
+        }
+
+        public ICollection<Order> GetByStatus(Status status)
+        {
+            return Collection.Where(x => x.Status == status).ToList();
         }
 
         public ICollection<Order> GetByClient(Client client)
         {
-            if (_collection.Any(x => x.Client == client))
+            if (Collection.Any(x => x.Client == client))
             {
-                return _collection.Where(x => x.Client == client).ToList();
+                return Collection.Where(x => x.Client == client).ToList();
             }
-            throw new Exception();
+            return new List<Order>();
         }
 
         public ICollection<Order> GetByProduct(Product product)
         {
             if (Contains(product))
             {
-                return _collection.Where(x => x.OrderItems.Any(it => it.Product == product)).ToList();
+                return Collection.Where(x => x.OrderItems.Any(it => it.Product == product)).ToList();
             }
-            throw new Exception();
+            return new List<Order>();
         }
-
-        public void AddOrder(Product product, int quantity)
+        //TODO fix
+        public void AddOrder(Order order, Product product, int quantity)
         {
             if (!Contains(product))
             {
-                _collection.Add(new Order(new List<Comment>(), new List<OrderItem>()
+                Collection.Add(new Order(new List<Comment>(), new List<OrderItem>
                 {
                     new OrderItem(product, quantity, product.Price)
-                } ));
+                }));
             }
             throw new Exception();
         }
 
-        public bool Contains(Product product)
+        private bool Contains(Product product)
         {
-            return _collection.Any(x => x.OrderItems.Any(it => it.Product == product));
+            return Collection.Any(x => x.OrderItems.Any(it => it.Product == product));
         }
-
-        public void RemoveOrder(Product product)
+        //TODO fix
+        public void RemoveOrder(Order order, Product product)
         {
             if (Contains(product))
             {
-                _collection.First(x => x.OrderItems.Any(it => it.Product == product)).IsActive = false;
+                Collection.First(x => x.OrderItems.Any(it => it.Product == product)).IsActive = false;
             }
             throw new Exception();
         }
-
-        public void EditOrder(Product product, int quantity)
+        //TODO fix
+        public void EditOrder(Order order, Product product, int quantity)
         {
             if (Contains(product))
             {
-                var prod = _collection[_collection.IndexOf(_collection.First(x => x.OrderItems.Any(it => it.Product == product)))].OrderItems.First(x => x.Product == product);
+                var prod = Collection[Collection.IndexOf(Collection.First(x => x.OrderItems.Any(it => it.Product == product)))].OrderItems.First(x => x.Product == product);
                 prod.Quantity = quantity;
             }
             throw new Exception();
         }
-
+        [Obsolete("This method was used in case of sum of ALL the orders of target, now use GetAll and Sum for it")]
         public double Sum
         {
-            get { return _collection.Sum(x => x.Sum); }
+            get { return Collection.Sum(x => x.Sum); }
         }
     }
 }

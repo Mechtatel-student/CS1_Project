@@ -7,13 +7,13 @@ namespace Domain.DAO
     public interface IRepository<T>
     {
         void Create(T entity);
-        void Save(T entity);
+        T Read(int id);
+        void Update(T entity);
         void Delete(T entity);
         void Delete(int id);
-        T Find(int id);
-        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
 
         IQueryable<T> GetAll();
         IQueryable<T> GetByIsActive(bool isActive);
+        IQueryable<T> FindBy(Expression<Func<T, bool>> predicate);
     }
 }

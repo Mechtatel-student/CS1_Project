@@ -1,44 +1,37 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using Domain.Entities.Clients;
 using Domain.Entities.Comments;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Linq;
 
 namespace Domain.Entities.Orders
 {
-    public enum Status { Opened, PaidUp, Finished, Shipped, Closed }
+    public enum Status { All, Opened, PaidUp, Finished, Shipped, Closed }
 
     public class Order : ExtendedEntity, ICommentable
-    {        
-        public Client Client { get; set; }
-        public Status Status { get; set; }
-        public string OrderNumber { get; set; }
-
-        private List<OrderItem> orderItems;
-        private ICollection<Comment> comments;
-
-        public Order(ICollection<Comment> comments, List<OrderItem> orders)
+    {
+        public Order(ICollection<Comment> comments, ICollection<OrderItem> orders)
         {
-            this.comments = comments;
-            orderItems = orders;
+            Comments = comments;
+            OrderItems = orders.ToList();
         }
 
         public Order()
         {
-            
+
         }
 
-        public List<OrderItem> OrderItems
-        {
-            get { return orderItems; }
-        }
+        public Client Client { get; set; }
+        public Status Status { get; set; }
+        public string OrderNumber { get; set; }
 
-        public IReadOnlyCollection<Comment> Comments
-        {
-            get { return (IReadOnlyCollection<Comment>)comments; }
-        }
+        public virtual ICollection<Comment> Comments { get; set; }
+        public virtual List<OrderItem> OrderItems { get; set; }
 
         public double Sum
         {
-            get { return orderItems.Sum(x => x.Price); }
+            get { return OrderItems.Sum(x => x.Price * x.Quantity); }
         }
     }
 }

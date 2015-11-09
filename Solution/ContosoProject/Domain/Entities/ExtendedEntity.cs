@@ -4,7 +4,7 @@ namespace Domain.Entities
 {
     public abstract class ExtendedEntity : Entity
     {
-        protected ExtendedEntity()
+        protected ExtendedEntity() : base()
         {
             Date = DateTime.Now;
         }

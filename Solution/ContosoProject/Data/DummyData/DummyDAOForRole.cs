@@ -11,13 +11,13 @@ namespace Data.DummyData
     {
         public DummyDAOForRole()
         {
-            _collection = Storage.Roles;
+            Collection = Storage.Roles;
         }
         public ICollection<Role> GetByTitle(string title)
         {
-            if (_collection.Any(x => x.Title == title))
+            if (Collection.Any(x => x.Title == title))
             {
-                return _collection.Where(x => x.Title == title).ToList();
+                return Collection.Where(x => x.Title == title).ToList();
             }
             else
                 throw new Exception();
@@ -25,9 +25,9 @@ namespace Data.DummyData
 
         public ICollection<Role> GetByPermission(Permission permission)
         {
-            if (_collection.Any(x => x.Permissions.Any(perm => perm == permission)))
+            if (Collection.Any(x => x.Permissions.Any(perm => perm == permission)))
             {
-                return _collection.Where(x => x.Permissions.Any(perm => perm == permission)).ToList();
+                return Collection.Where(x => x.Permissions.Any(perm => perm == permission)).ToList();
             }
             else
                 throw new Exception();

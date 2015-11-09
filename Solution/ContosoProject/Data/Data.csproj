@@ -48,17 +48,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Design\DummyFacade.cs" />
+    <Compile Include="Design\EFRepositoryFacade.cs" />
     <Compile Include="EFRepository\EFBaseDao.cs" />
+    <Compile Include="EFRepository\EFCategoryDAO.cs" />
+    <Compile Include="EFRepository\EFClientDAO.cs" />
+    <Compile Include="EFRepository\EFCommentDAO.cs" />
+    <Compile Include="EFRepository\EFOrderDAO.cs" />
+    <Compile Include="EFRepository\EFPermissionDAO.cs" />
+    <Compile Include="EFRepository\EFProductDAO.cs" />
+    <Compile Include="EFRepository\EFRoleDAO.cs" />
+    <Compile Include="EFRepository\EFUserDAO.cs" />
     <Compile Include="EFRepository\ProjectContext.cs" />
-    <Compile Include="Migrations\201510200912476_Init.cs" />
-    <Compile Include="Migrations\201510200912476_Init.Designer.cs">
-      <DependentUpon>201510200912476_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DummyData\DummyDAOForCategory.cs" />
     <Compile Include="DummyData\DummyDAOForClient.cs" />
     <Compile Include="DummyData\DummyDAOForComment.cs" />
-    <Compile Include="StoreData\KeyedCollections.cs" />
+    <Compile Include="Design\IRepositoryFacade.cs" />
+    <Compile Include="Migrations\201511071914338_Init.cs" />
+    <Compile Include="Migrations\201511071914338_Init.Designer.cs">
+      <DependentUpon>201511071914338_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DummyData\DummyDAOExtension.cs" />
     <Compile Include="DummyData\DummyDAOForOrder.cs" />
     <Compile Include="DummyData\DummyDAOForPermission.cs" />
@@ -74,21 +84,21 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201510200912476_Init.resx">
-      <DependentUpon>201510200912476_Init.cs</DependentUpon>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{39d880e2-2939-497d-8049-5eb6ad7bcb40}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj">
+      <Project>{39d880e2-2939-497d-8049-5eb6ad7bcb40}</Project>
+      <Name>Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511071914338_Init.resx">
+      <DependentUpon>201511071914338_Init.cs</DependentUpon>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{39d880e2-2939-497d-8049-5eb6ad7bcb40}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{39d880e2-2939-497d-8049-5eb6ad7bcb40}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

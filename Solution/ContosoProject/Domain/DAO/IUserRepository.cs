@@ -6,7 +6,8 @@ namespace Domain.DAO
 {
     public interface IUserRepository : IRepositoryExtension<User>
     {
-        ICollection<User> GetBy(string login, Person person);
+        ICollection<User> GetBy(string login, string firstName, string lastName);
         ICollection<User> GetByRole(Role role);
+        User Authentificate(string login, string passwordHash);
     }
 }

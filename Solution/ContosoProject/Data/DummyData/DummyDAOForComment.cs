@@ -10,18 +10,18 @@ namespace Data.DummyData
 {
     public class DummyDAOForComment : DummyDAOExtension<Comment>, ICommentRepository
     {
-        public ICollection<Comment> GetByUser(User user)
+        public ICollection<Comment> GetAllByUser(User user)
         {
-            if (_collection.Any(x => x.Author == user))
+            if (Collection.Any(x => x.Author == user))
             {
-                return _collection.Where(x => x.Author == user).ToList();
+                return Collection.Where(x => x.Author == user).ToList();
             }
             throw new Exception();
         }
 
         public DummyDAOForComment()
         {
-            _collection = Storage.GodComments;
+            Collection = Storage.GodComments;
         }
     }
 }

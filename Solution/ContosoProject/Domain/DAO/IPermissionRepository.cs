@@ -3,8 +3,10 @@ using Domain.Entities.Users;
 
 namespace Domain.DAO
 {
-    public interface IPermissionRepository : IRepository<Permission>
+    public interface IPermissionRepository
     {
+        Permission GetById(int id);
         ICollection<Permission> GetByTitle(string title);
+        ICollection<Permission> GetAll();
     }
 }

@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="Accessibility" />
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
@@ -66,6 +67,13 @@
     <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraVerticalGrid.v15.1, Version=15.1.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -93,16 +101,158 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryForm\CategoryModel.cs" />
+    <Compile Include="CategoryForm\CategoryPresenter.cs" />
+    <Compile Include="CategoryForm\CategoryView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CategoryForm\CategoryView.Designer.cs">
+      <DependentUpon>CategoryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CategoryForm\ICategoryView.cs" />
+    <Compile Include="ClientForm\ClientModel.cs" />
+    <Compile Include="ClientForm\ClientPresenter.cs" />
+    <Compile Include="ClientForm\IClientView.cs" />
+    <Compile Include="ClientSearchForm\ClientListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientSearchForm\ClientListView.Designer.cs">
+      <DependentUpon>ClientListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientSearchForm\ClientSearchModel.cs" />
+    <Compile Include="ClientSearchForm\ClientSearchPresenter.cs" />
+    <Compile Include="ClientSearchForm\IClientSearchView.cs" />
+    <Compile Include="ISearchPresenter.cs" />
+    <Compile Include="IViewPresenter.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientForm\ClientView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForm\ClientView.Designer.cs">
+      <DependentUpon>ClientView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model.cs" />
+    <Compile Include="OrderForm\IOrderView.cs" />
+    <Compile Include="OrderForm\OrderModel.cs" />
+    <Compile Include="OrderForm\OrderPresenter.cs" />
+    <Compile Include="OrderSearchForm\OrderListModel.cs" />
+    <Compile Include="ProductForm\IProductView.cs" />
+    <Compile Include="ProductForm\ProductModel.cs" />
+    <Compile Include="ProductForm\ProductPresenter.cs" />
+    <Compile Include="RoleForm\IRoleView.cs" />
+    <Compile Include="ProductSearchForm\ProductListModel.cs" />
+    <Compile Include="ChairsSplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChairsSplashScreen.Designer.cs">
+      <DependentUpon>ChairsSplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoleForm\RoleModel.cs" />
+    <Compile Include="RoleForm\RolePresenter.cs" />
+    <Compile Include="RoleForm\RoleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RoleForm\RoleView.Designer.cs">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\IUserView.cs" />
+    <Compile Include="UserForm\UserModel.cs" />
+    <Compile Include="UserForm\UserPresenter.cs" />
+    <Compile Include="OrderSearchForm\IOrderListView.cs" />
+    <Compile Include="OrderSearchForm\OrderListPresenter.cs" />
+    <Compile Include="OrderSearchForm\OrderListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderSearchForm\OrderListView.Designer.cs">
+      <DependentUpon>OrderListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Presenter.cs" />
+    <Compile Include="ProductSearchForm\IProductListView.cs" />
+    <Compile Include="ProductSearchForm\ProductListPresenter.cs" />
+    <Compile Include="ProductSearchForm\ProductListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductSearchForm\ProductListView.Designer.cs">
+      <DependentUpon>ProductListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForm\OrderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForm\OrderView.Designer.cs">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductForm\ProductView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductForm\ProductView.Designer.cs">
+      <DependentUpon>ProductView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserSearchForm\IUserSearchView.cs" />
+    <Compile Include="UserSearchForm\UserSearchModel.cs" />
+    <Compile Include="UserSearchForm\UserSearchPresenter.cs" />
+    <Compile Include="UserSearchForm\UsersListView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <EmbeddedResource Include="CategoryForm\CategoryView.resx">
+      <DependentUpon>CategoryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForm\ClientView.resx">
+      <DependentUpon>ClientView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="UserSearchForm\UsersListView.Designer.cs">
+      <DependentUpon>UsersListView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClientSearchForm\ClientListView.resx">
+      <DependentUpon>ClientListView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForm\OrderView.resx">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductForm\ProductView.resx">
+      <DependentUpon>ProductView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChairsSplashScreen.resx">
+      <DependentUpon>ChairsSplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoleForm\RoleView.resx">
+      <DependentUpon>RoleView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderSearchForm\OrderListView.resx">
+      <DependentUpon>OrderListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductSearchForm\ProductListView.resx">
+      <DependentUpon>ProductListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,6 +264,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserSearchForm\UsersListView.resx">
+      <DependentUpon>UsersListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

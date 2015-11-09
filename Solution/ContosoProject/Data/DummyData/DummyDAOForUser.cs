@@ -12,39 +12,41 @@ namespace Data.DummyData
     {
         public DummyDAOForUser()
         {
-            _collection = Storage.Users;
+            Collection = Storage.Users;
         }
 
-
-        public ICollection<User> GetBy(string login, Person person)
+        public ICollection<User> GetBy(string login, string firstName, string lastName)
         {
-            var result = _collection.AsQueryable();
+            var result = Collection.AsQueryable();
             if (!string.IsNullOrWhiteSpace(login))
             {
                 result = result.Where(x => x.Login == login);
             }
-            if (!string.IsNullOrWhiteSpace(person.FirstName))
+            if (!string.IsNullOrWhiteSpace(firstName))
             {
-                result = result.Where(x => x.Person.FirstName == person.FirstName);
+                result = result.Where(x => x.Person.FirstName == firstName);
             }
-            if (!string.IsNullOrWhiteSpace(person.MiddleName))
+            if (!string.IsNullOrWhiteSpace(lastName))
             {
-                result = result.Where(x => x.Person.MiddleName == person.MiddleName);
-            }
-            if (!string.IsNullOrWhiteSpace(person.LastName))
-            {
-                result = result.Where(x => x.Person.LastName == person.LastName);
+                result = result.Where(x => x.Person.LastName == lastName);
             }
             return result.ToList();
         }
 
+
         public ICollection<User> GetByRole(Role role)
         {
-            if (_collection.Any(x => x.Role == role))
+            if (Collection.Any(x => x.Role == role))
             {
-                return _collection.Where(x => x.Role == role).ToList();
+                return Collection.Where(x => x.Role == role).ToList();
             }
             throw new Exception();
+        }
+
+
+        public User Authentificate(string login, string passwordHash)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,6 +4,6 @@ namespace Domain.Entities.Comments
 {
     public interface ICommentable
     {
-        IReadOnlyCollection<Comment> Comments { get; }
+        ICollection<Comment> Comments { get; set; }
     }
 }
