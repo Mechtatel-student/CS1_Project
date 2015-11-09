@@ -105,6 +105,7 @@ namespace ContosoUI.OrderForm
             _state = true;
             _orderItems = new BindingList<OrderItem>();
             _comments = new BindingList<Comment>();
+            _id = 0;
             NotifyPropertyChanged();
         }
 

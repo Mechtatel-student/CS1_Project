@@ -133,6 +133,7 @@ namespace ContosoUI.ProductForm
             Title = null;
             Quantity = 0;
             Price = 0;
+            _id = 0;
             ProductComments = new BindingList<Comment>();
             SearchTitleCategory = string.Empty;
         }
